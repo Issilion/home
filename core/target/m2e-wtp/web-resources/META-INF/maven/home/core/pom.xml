@@ -63,6 +63,12 @@
 			<artifactId>taglibs-standard-jstlel</artifactId>
 			<version>1.2.1</version>
 		</dependency>
+		<!-- Apache Tiles -->
+        <dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-extras</artifactId>
+		    <version>3.0.7</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>sshwa</finalName>
