@@ -1,21 +1,35 @@
 package home.core.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
+	//AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PostgreConfig.class);
+	//UserDetailsService userDetailsService = context.getBean(UserService.class);
+	@Autowired
+	@Qualifier("userDetailsService")
+	UserDetailsService userDetailsService;
+
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+		auth.userDetailsService(userDetailsService);
+		/*auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");
+		auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");*/
 	}
 
 	@Override
@@ -26,5 +40,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login").permitAll().defaultSuccessUrl("/", false).and().logout().permitAll();
 		
 
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
 	}
 }

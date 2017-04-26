@@ -20,13 +20,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 
 	@Bean
 	public ViewResolver getViewResolver(){
-		/*InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/pages/");
-		resolver.setSuffix(".jsp");
-		return resolver;*/
 		UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-		 
-        // TilesView 3
+		// TilesView 3
         viewResolver.setViewClass(TilesView.class);
  
         return viewResolver;
@@ -42,17 +37,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;
     }
-    
-   /**
-     * Configure ViewResolvers to deliver preferred views.
-     *//*
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        TilesViewResolver viewResolver = new TilesViewResolver();
-        registry.viewResolver(viewResolver);
-    }
-     */
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

@@ -30,32 +30,37 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.0.5.RELEASE</version>
+			<version>4.3.7.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.0.5.RELEASE</version>
+			<version>4.3.7.RELEASE</version>
 			<type>jar</type>
 		</dependency> 
+		<dependency>
+		      <groupId>org.springframework</groupId>
+		      <artifactId>spring-orm</artifactId>
+		      <version>4.3.7.RELEASE</version>
+	    </dependency>
 		<!-- Add Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
  
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.2.4.RELEASE</version>
+			<version>4.2.2.RELEASE</version>
 		</dependency>
 		<!-- Add Jstl Dependencies -->
 		<dependency>
@@ -69,7 +74,25 @@
 		    <artifactId>tiles-extras</artifactId>
 		    <version>3.0.7</version>
 		</dependency>
+		 <!-- postgre Connector -->
+	    <dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1212</version>
+		</dependency>
+	    <!-- Hibernate 5.2.9 Final -->
+	    <dependency>
+	      <groupId>org.hibernate</groupId>
+	      <artifactId>hibernate-core</artifactId>
+	      <version>5.2.9.Final</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.apache.commons</groupId>
+	      <artifactId>commons-dbcp2</artifactId>
+	      <version>2.1.1</version>
+	    </dependency>
 	</dependencies>
+	
 	<build>
 		<finalName>sshwa</finalName>
 		<plugins>
