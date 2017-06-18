@@ -15,7 +15,6 @@
   
    <!-- Home Page -->
    <definition name="home" extends="base-definition">  
- 	   <put-attribute name="header" value="" />  
        <put-attribute name="title" value="Welcome" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
    </definition>

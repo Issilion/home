@@ -14,19 +14,19 @@
 </head>
   
 <body>
-        <header id="header">
+        <header class="col-md-12" id="header">
             <tiles:insertAttribute name="header" />
         </header>
      
-        <section id="sidemenu">
+        <section class="col-md-2" id="sidemenu">
             <tiles:insertAttribute name="menu" />
         </section>
              
-        <section id="site-content" style="padding-left: 320px;">
+        <section  id="site-content">
             <tiles:insertAttribute name="body" />
         </section>
          
-        <footer id="footer">
+        <footer class="col-md-12" id="footer">
             <tiles:insertAttribute name="footer" />
         </footer>
 </body>
