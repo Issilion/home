@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -42,7 +43,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/protected/**").access("hasRole('ROLE_ADMIN')")
 				.antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')").*/.and().formLogin()
 				.loginPage("/login").permitAll().defaultSuccessUrl("/home", false).and()
-					.logout()/*.permitAll()*/.logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true);
+					.logout()/*.permitAll()*/.logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
+					.and().apply(new SpringSocialConfigurer()
+			                .postLoginUrl("/")
+			                .alwaysUsePostLoginUrl(true));
 
 	}
 	
